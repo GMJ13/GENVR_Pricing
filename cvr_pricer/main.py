@@ -41,7 +41,7 @@ def main():
 
     sim_params = SimulationParams(
         n_paths=500000,
-        coc_intensity=0,
+        coc_intensity=0.005,
         coc_premium=1.25,
         seed=22,
         n_jobs= 8
