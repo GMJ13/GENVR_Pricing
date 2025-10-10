@@ -40,7 +40,7 @@ def main():
     )
 
     sim_params = SimulationParams(
-        n_paths=750000,
+        n_paths=500000,
         coc_intensity=0,
         coc_premium=1.25,
         seed=22,
@@ -50,12 +50,12 @@ def main():
     print(f"  Stock Price: ${cvr_params.S0:.2f}")
     print(f"  Barrier: ${cvr_params.barrier:.2f}")
     print(f"  Paths: {sim_params.n_paths:,}")
-    print(f"  Available CPU Cores: {cpu_count()}",f"Using: {sim_params.n_jobs} cores currently")
+    print(f"  Available CPU Cores: {cpu_count()}",f", Using: {sim_params.n_jobs} cores currently")
 
     # Step 2: Simulate paths
     print("\nStep 2: Simulating Heston paths in parallel...")
     simulation_results = simulate_heston_paths(cvr_params, heston_params, sim_params)
-    print(f"  Generated {sim_params.n_paths:,} paths across {cpu_count()} cores")
+    print(f"  Generated {sim_params.n_paths:,} paths across {sim_params.n_jobs} cores")
 
     # Step 3: Calculate CVR value
     print("\nStep 3: Calculating CVR payoffs...")
